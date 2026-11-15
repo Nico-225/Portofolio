@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nicholas Khosasi Hardware Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: each project is a drawing sheet — figures on the sheet, a title block of specs beside it. */
+:root{
+  --paper:#eef1f4;
+  --sheet:#ffffff;
+  --ink:#131c2e;
+  --muted:#56637a;
+  --rule:#c5ccd8;
+  --accent:#1b49c8;
+  --accent-soft:#e2e9fb;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0e1420; --sheet:#161e2e; --ink:#e7ecf5; --muted:#9aa6bb;
+    --rule:#2c384e; --accent:#86a6ff; --accent-soft:#1c2a4c; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0e1420; --sheet:#161e2e; --ink:#e7ecf5; --muted:#9aa6bb;
+  --rule:#2c384e; --accent:#86a6ff; --accent-soft:#1c2a4c; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+header.top{padding:56px 0 36px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+h1{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:clamp(34px,6vw,60px);line-height:1.02;letter-spacing:-.01em;margin:0 0 18px;text-wrap:balance}
+.lede{max-width:62ch;font-size:18px;margin:0 0 26px;color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;border:1px solid var(--rule);background:var(--sheet)}
+.facts div{padding:12px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 -1px -1px 0}
+.facts dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-weight:500}
+nav.index{display:flex;flex-wrap:wrap;gap:8px 10px;margin:26px 0 0;padding:0;list-style:none}
+nav.index a{display:inline-block;font-family:var(--mono);font-size:13px;text-decoration:none;padding:6px 11px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink)}
+nav.index a:hover{border-color:var(--accent);color:var(--accent)}
+
+main{padding:8px 0 40px}
+.project{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:32px;padding:48px 0;border-bottom:1px solid var(--rule)}
+.project > .figs{order:1}
+.project > .block{order:2}
+.no{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.06em;margin:0 0 8px}
+h2{font-family:var(--display);font-stretch:108%;font-weight:750;font-size:clamp(26px,3.6vw,36px);line-height:1.08;margin:0 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 16px;font-size:15.5px}
+.block p{margin:0 0 14px;max-width:60ch}
+.block h3{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+.block ul{margin:0 0 4px;padding-left:18px}
+.block li{margin:0 0 6px}
+table.spec{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--sheet);border:1px solid var(--rule)}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 12px;border-bottom:1px solid var(--rule)}
+table.spec tr:last-child th,table.spec tr:last-child td{border-bottom:0}
+table.spec th{width:38%;font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-right:1px solid var(--rule)}
+table.spec td{font-variant-numeric:tabular-nums}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.tags li{font-family:var(--mono);font-size:12px;padding:3px 8px;background:var(--accent-soft);color:var(--ink);margin:0}
+
+.figs{display:grid;gap:14px;align-content:start}
+figure{margin:0;background:var(--sheet);border:1px solid var(--rule)}
+figure img{width:100%;height:auto}
+figcaption{font-size:13.5px;color:var(--muted);padding:9px 12px;border-top:1px solid var(--rule)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pair figure{display:flex;flex-direction:column}
+.pair figure img{flex:1;object-fit:contain;background:#fff;max-height:340px}
+.pair figure.dark img{background:#000}
+.pair figure.app img{background:#211d18;padding:10px 0}
+
+footer{padding:36px 0 64px}
+footer h2{font-size:24px;margin-bottom:12px}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:0}
+.contact div{background:var(--sheet);border:1px solid var(--rule);padding:14px 16px}
+.contact dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.contact dd{margin:3px 0 0;overflow-wrap:anywhere}
+.note{color:var(--muted);font-size:14px;max-width:70ch;margin:20px 0 0}
+
+@media (max-width:860px){
+  .project{grid-template-columns:1fr;gap:22px;padding:36px 0}
+  .project > .block{order:1}
+  .project > .figs{order:2}
+}
+@media (max-width:460px){
+  .pair{grid-template-columns:1fr}
+  header.top{padding-top:36px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Hardware portfolio · 2023–2026</p>
+    <h1>Nicholas Ananda Khosasi</h1>
+    <p class="lede">Robotics engineering graduate who takes hardware from CAD to a working prototype: mechanical design, embedded control, and computer vision that runs on the device. Seven projects follow, each with what was built and what was measured.</p>
+    <dl class="facts">
+      <div><dt>Degree</dt><dd>B.Eng. Automotive &amp; Robotics Engineering, BINUS University, 2026</dd></div>
+      <div><dt>GPA</dt><dd>3.71 / 4.00</dd></div>
+      <div><dt>Now</dt><dd>Junior Researcher, BRIN</dd></div>
+      <div><dt>Based in</dt><dd>Tangerang, Indonesia</dd></div>
+    </dl>
+    <nav class="index" aria-label="Projects">
+      <a href="#gungnir">01 GUNGNIR</a>
+      <a href="#aegis">02 AEGIS</a>
+      <a href="#amec">03 AMeC-OReg</a>
+      <a href="#cameramatic">04 Cameramatic</a>
+      <a href="#hivesprout">05 HiveSprout</a>
+      <a href="#nrs">06 NRS digital form</a>
+      <a href="#zoe">07 Zoe tree monitor</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="project" id="gungnir">
+    <div class="figs">
+      <figure>
+        <img src="img/gungnir-gantry.jpg" alt="CAD model of an aluminium-extrusion planar gantry carrying two stepper motors and a camera carriage above a model forearm" width="880" height="424">
+        <figcaption>CAD assembly: four-stepper planar gantry over the forearm, with the near-infrared camera rig on the carriage.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/gungnir-figures.jpg" alt="Three figures: a diagram of near-infrared light absorbed by a vein under the skin, a stress simulation of the gantry frame, and a near-infrared image of a forearm with the detected vein and target point marked" width="858" height="252">
+        <figcaption>Left to right: how near-infrared light shows a vein, stress analysis of the frame, and a detected vein with the chosen injection point.</figcaption>
+      </figure>
+    </div>
+    <div class="block">
+      <p class="no">01 · Final-year project · 2026</p>
+      <h2>GUNGNIR</h2>
+      <p class="sub">Needle guidance from stereo near-infrared vein detection</p>
+      <p>Drawing blood often fails because the vein is hard to find. Existing vein finders only project a flat image and leave depth to the operator's hand. GUNGNIR finds the vein with a camera and then moves a gantry to point the needle at it.</p>
+      <p>I built the detection pipeline, designed the gantry, and tuned its controller.</p>
+      <h3>Measured</h3>
+      <table class="spec">
+        <tr><th>Pipeline time</th><td>about 724 ms per image on a Raspberry Pi 5, across 10 test images</td></tr>
+        <tr><th>Model size</th><td>9 MB to 2.4 MB after INT8 quantization, IoU drop of 0.002</td></tr>
+        <tr><th>Positioning</th><td>steady-state error under 0.01 mm in simulation</td></tr>
+        <tr><th>Settling time</th><td>under 1.5 s in simulation</td></tr>
+      </table>
+      <h3>How it works</h3>
+      <ul>
+        <li>U-Net with a MobileNetV2 encoder segments the vein, followed by CLAHE, Hessian ridge detection and skeletonization to pick the injection point.</li>
+        <li>Four NEMA 17 steppers drive the gantry through inverse and forward kinematics with an overdamped PID controller.</li>
+        <li>The frame was checked with stress analysis in Autodesk Inventor before building.</li>
+      </ul>
+      <ul class="tags"><li>Python</li><li>PyTorch</li><li>ONNX Runtime</li><li>OpenCV</li><li>Raspberry Pi 5</li><li>Simulink</li><li>Autodesk Inventor</li></ul>
+    </div>
+  </section>
+
+  <section class="project" id="aegis">
+    <div class="figs">
+      <figure>
+        <img src="img/aegis-device.jpg" alt="Grey 3D-printed AEGIS enclosure with a curved finger slot over the sensor and an AEGIS nameplate" width="426" height="214">
+        <figcaption>The AEGIS device: printed enclosure with the finger slot over the PPG sensor.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/aegis-results.jpg" alt="Bar charts comparing lab values with device estimates for glucose, cholesterol, uric acid, systolic and diastolic pressure across seven hold-out subjects" width="700" height="440">
+        <figcaption>Lab values (blue) against device estimates (orange) for seven hold-out subjects.</figcaption>
+      </figure>
+    </div>
+    <div class="block">
+      <p class="no">02 · BRIN final project · 2025–2026</p>
+      <h2>AEGIS</h2>
+      <p class="sub">Checking blood sugar, uric acid and cholesterol without a needle</p>
+      <p>Routine checks for diabetes and similar conditions mean drawing blood. AEGIS estimates these values from infrared light passed through a fingertip instead. It is a screening prototype, not a clinical test.</p>
+      <p>I designed and built the physical system: the enclosure, the sensor mounting and the device hardware. The estimation research was led by Carissa Aurelia Adeline.</p>
+      <h3>Measured</h3>
+      <table class="spec">
+        <tr><th>Glucose</th><td>mean error 28.6 mg/dL on hold-out data</td></tr>
+        <tr><th>Blood pressure</th><td>mean error 17.9 mmHg systolic, 7.4 mmHg diastolic</td></tr>
+        <tr><th>Subjects</th><td>50, with leave-one-subject-out checks</td></tr>
+        <tr><th>Uric acid</th><td>estimates still less accurate</td></tr>
+      </table>
+      <h3>Build</h3>
+      <ul>
+        <li>ESP32 with an infrared and red PPG sensor in a 3D-printed housing.</li>
+        <li>The readings feed an AutoML estimation pipeline calibrated in the field.</li>
+      </ul>
+      <ul class="tags"><li>ESP32</li><li>PPG sensor</li><li>CAD</li><li>3D printing</li></ul>
+    </div>
+  </section>
+
+  <section class="project" id="amec">
+    <div class="block" style="grid-column:1 / -1">
+      <p class="no">03 · BRIN AIDeaNation 2025 finalist · team of three</p>
+      <h2>AMeC-OReg check-up station</h2>
+      <p class="sub">The physical station for a self-service medical check-up system</p>
+      <p>AMeC-OReg is a self-service station where patients register, have vital signs taken, and get an AI-assisted first assessment before seeing a doctor. I designed and built the physical station that houses the registration screen and the measuring devices. The decision engine it connects to, built by Jonathan Edwards Telaumbanua, reached 89% triage accuracy across 1,662 patients and connected end to end in every test. The project was a finalist at BRIN AIDeaNation 2025 at the InaRI Expo.</p>
+      <ul class="tags"><li>Product design</li><li>CAD</li><li>Fabrication</li><li>IoT integration</li></ul>
+    </div>
+  </section>
+
+  <section class="project" id="cameramatic">
+    <div class="figs">
+      <div class="pair">
+        <figure class="dark">
+          <img src="img/cameramatic-arm.jpg" alt="A black 3D-printed four-axis arm on a round base with a phone holder at the end" width="300" height="360">
+          <figcaption>The printed arm with its phone holder.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/cameramatic-pid.jpg" alt="Step-response plot comparing the joint with and without PID control" width="1000" height="562">
+          <figcaption>Joint Y1 step response, with and without PID.</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <img src="img/cameramatic-simulink.jpg" alt="Simulink model of the camera arm with one control loop per servo joint" width="1000" height="562">
+        <figcaption>Simulink model with one loop per joint.</figcaption>
+      </figure>
+    </div>
+    <div class="block">
+      <p class="no">04 · Team of four · 2025</p>
+      <h2>Cameramatic</h2>
+      <p class="sub">A camera arm that follows the person it is filming</p>
+      <p>Solo creators usually need a second person to aim the camera. Cameramatic detects a face and turns the arm to keep it centred, so one person can film alone.</p>
+      <h3>Build</h3>
+      <table class="spec">
+        <tr><th>Controller</th><td>ESP32</td></tr>
+        <tr><th>Vision</th><td>ESP32-CAM face detection</td></tr>
+        <tr><th>Actuators</th><td>4 MG995 servos: base rotation, two arm joints, holder tilt</td></tr>
+        <tr><th>Travel limit</th><td>potentiometer on the joint</td></tr>
+        <tr><th>PID gains</th><td>Kp 0.6312, Ki 59, Kd 0.00924</td></tr>
+      </table>
+      <h3>How it works</h3>
+      <ul>
+        <li>The camera reports how far the face is from the centre of the frame in pixels; the arm moves X, then Y, until the error is zero.</li>
+        <li>Each servo was modelled as a second-order transfer function in Simulink and tuned there before the gains went on the hardware.</li>
+      </ul>
+      <ul class="tags"><li>ESP32</li><li>ESP32-CAM</li><li>C/C++</li><li>Simulink</li><li>3D printing</li></ul>
+    </div>
+  </section>
+
+  <section class="project" id="hivesprout">
+    <div class="figs">
+      <div class="pair">
+        <figure>
+          <img src="img/hivesprout-pot.jpg" alt="Two hexagonal 3D-printed pots joined side by side, one holding a tomato plant, with a camera on a stalk above it" width="520" height="600">
+          <figcaption>Third iteration: joined hexagonal modules with the leaf camera.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/hivesprout-prototype.jpg" alt="Early prototype with exposed wiring, battery cells, a small LCD and a solar panel" width="390" height="340">
+          <figcaption>First prototype: solar panel, pump, moisture and water-level sensing.</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <img src="img/hivesprout-system.jpg" alt="System diagram: the pot's camera uploads a photo to Firebase, a server classifies it, and the phone app shows the result" width="1000" height="562">
+        <figcaption>Data path: ESP32-CAM to Firebase, to the classification server, to the phone app.</figcaption>
+      </figure>
+    </div>
+    <div class="block">
+      <p class="no">05 · Team project · 2023–2025</p>
+      <h2>HiveSprout</h2>
+      <p class="sub">A modular smart pot that waters itself and checks leaf health</p>
+      <p>HiveSprout began as a solar-powered pot that waters a plant from soil-moisture and water-level readings, then sleeps to save power. Over three iterations it became a product concept with a phone app, a business model, and a camera that spots tomato leaf disease and triggers a fungicide spray.</p>
+      <h3>Measured</h3>
+      <table class="spec">
+        <tr><th>Leaf classifier</th><td>76.1% accuracy across 5 classes, voting ensemble</td></tr>
+        <tr><th>Single models</th><td>neural network 76.7%, logistic regression 67.4%</td></tr>
+        <tr><th>Energy</th><td>sleep mode designed for up to 15% lower use</td></tr>
+        <tr><th>Spray rule</th><td>once a day when a leaf is classified as diseased</td></tr>
+      </table>
+      <h3>How it works</h3>
+      <ul>
+        <li>Hexagonal modules join like honeycomb, so pots can be added or rearranged.</li>
+        <li>Leaf photos are converted to greyscale and described with HOG features, then classified by an SVM, a logistic regression and a neural network that vote.</li>
+        <li>Status is pushed to the app through Firebase.</li>
+      </ul>
+      <ul class="tags"><li>ESP32-CAM</li><li>scikit-learn</li><li>Firebase</li><li>3D printing</li><li>Solar power</li></ul>
+    </div>
+  </section>
+
+  <section class="project" id="nrs">
+    <div class="figs">
+      <figure>
+        <img src="img/nrs-flow.jpg" alt="Flowchart of the web application: log in, view the list, submit or edit a sheet by role, save to SQL Server, and open the dashboard" width="1100" height="567">
+        <figcaption>Application flow: role check, form entry, storage, and dashboard. Screens are not shown because they contain company data.</figcaption>
+      </figure>
+    </div>
+    <div class="block">
+      <p class="no">06 · Internship, Omron Manufacturing Indonesia · Feb–May 2025</p>
+      <h2>NRS digital form</h2>
+      <p class="sub">Replacing a paper quality form with a web app and dashboard</p>
+      <p>The quality assurance team tracked Non-Conformity Returned Sheets on paper. Sheets went missing and deadlines were hard to follow. I designed and built a web application that takes the form online and shows which sheets need attention.</p>
+      <h3>Build</h3>
+      <table class="spec">
+        <tr><th>Stack</th><td>PHP, Bootstrap, SQL Server, hosted on site</td></tr>
+        <tr><th>Data</th><td>about 40 columns in the main table</td></tr>
+        <tr><th>Deadline</th><td>5 working days, skipping weekends and holidays</td></tr>
+        <tr><th>Access</th><td>Admin, QA and Production roles; hashed passwords</td></tr>
+        <tr><th>Schedule</th><td>16 weeks from requirements to feedback</td></tr>
+      </table>
+      <h3>How it works</h3>
+      <ul>
+        <li>The sheet number is generated automatically and product fields fill in from the manufacturing order number.</li>
+        <li>Each row is coloured by status: new, near deadline, overdue, or closed.</li>
+        <li>A dashboard charts sheets by product and month, and by problem type per financial year.</li>
+      </ul>
+      <ul class="tags"><li>PHP</li><li>Bootstrap</li><li>SQL Server</li></ul>
+    </div>
+  </section>
+
+  <section class="project" id="zoe">
+    <div class="figs">
+      <div class="pair">
+        <figure class="app">
+          <img src="img/zoe-phone.jpg" alt="Phone showing the Zoe app start screen with a tree logo" width="270" height="550">
+          <figcaption>Start screen.</figcaption>
+        </figure>
+        <figure class="app">
+          <img src="img/zoe-menu.jpg" alt="Zoe app main menu with three options: update, register, and generate QR label" width="296" height="540">
+          <figcaption>Main menu: update, register, generate QR label.</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <img src="img/zoe-flow.jpg" alt="Flow diagram of the app from log-in to the main menu and on to scanning a QR label, registering a tree, or updating its data" width="1000" height="562">
+        <figcaption>Screen flow from log-in to registering or updating a tree.</figcaption>
+      </figure>
+    </div>
+    <div class="block">
+      <p class="no">07 · Team of six · 2024</p>
+      <h2>Zoe tree monitor</h2>
+      <p class="sub">An Android app for tracking donated trees on the Cisadane riverbank</p>
+      <p>BINUS University planted 50 Kiray trees in June 2024 to hold the riverbank against erosion, and half survived the first two months. Zoe gives each tree a QR label so volunteers can record its height and a photo over time. The project was funded by a BINUS community empowerment grant.</p>
+      <h3>Build</h3>
+      <table class="spec">
+        <tr><th>Platform</th><td>Android, built with Kodular</td></tr>
+        <tr><th>Storage</th><td>Firebase Realtime Database, with a timestamped history per tree</td></tr>
+        <tr><th>Tree ID</th><td>generated QR label, scanned to register or update</td></tr>
+        <tr><th>Public view</th><td>web page listing each tree, donor, height and photo</td></tr>
+        <tr><th>Status</th><td>working prototype, not yet field-tested</td></tr>
+      </table>
+      <ul class="tags"><li>Android</li><li>Kodular</li><li>Firebase</li><li>QR codes</li></ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <h2>Contact</h2>
+  <dl class="contact">
+    <div><dt>Email</dt><dd><a href="mailto:nicholas.khosasi@binus.ac.id">nicholas.khosasi@binus.ac.id</a></dd></div>
+    <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/nicholas-khosasi-06662a1a3">linkedin.com/in/nicholas-khosasi-06662a1a3</a></dd></div>
+    <div><dt>Available</dt><dd>From January 2027</dd></div>
+  </dl>
+  <p class="note">Figures come from the project posters and presentation decks. GUNGNIR and the NRS form were individual projects. On AEGIS and AMeC-OReg I built the physical systems; the other projects were team work.</p>
+</footer>
+</body>
+</html>
